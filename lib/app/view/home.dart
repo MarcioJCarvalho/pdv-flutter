@@ -37,6 +37,16 @@ class _MyHomePageState extends State<Home> {
               title: Text('Cadastrar Cliente'),
               onTap: () {Navigator.of(context).pushNamed(App.HOME);},
             ), 
+            ListTile(
+            leading: Icon(Icons.add_box_sharp),
+            title: Text('Cadastrar Produto'),
+            onTap: () {Navigator.of(context).pushNamed(App.PRODUCT_LIST);},
+            ),
+            ListTile(
+              leading: Icon(Icons.group_add_sharp),
+              title: Text('Cadastrar Cliente'),
+              onTap: () {Navigator.of(context).pushNamed(App.HOME);},
+            ), 
           ],
         ),
       ),
