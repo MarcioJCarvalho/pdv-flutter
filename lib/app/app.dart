@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pdv_flutter/app/view/home.dart';
+import 'package:pdv_flutter/app/view/product_form.dart';
+import 'package:pdv_flutter/app/view/product_list.dart';
 
 // exemplo de StateLessWidget
 class App extends StatelessWidget {
@@ -17,6 +19,8 @@ class App extends StatelessWidget {
       // exemplo de rota 
       routes: {
         HOME:(context)=>Home(),
+        PRODUCT_LIST:(context)=>ProductList(),
+        PRODUCT_FORM:(context)=>ProductForm(),
       },
     );
   }
