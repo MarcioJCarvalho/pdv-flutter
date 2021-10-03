@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pdv_flutter/app/app.dart';
+import 'package:pdv_flutter/app/database/dao/product_dao_impl.dart';
 import 'package:pdv_flutter/app/domain/entities/product.dart';
 
 class ProductList extends StatelessWidget {
   //retorna de forma assincrona uma lista de Map com seu respectivo valor
   Future<List<Product>> _buscar()async{
-    //return await ProductDAOImpl().find();
+    return await ProductDAOImpl().find();
   }
 
   @override
