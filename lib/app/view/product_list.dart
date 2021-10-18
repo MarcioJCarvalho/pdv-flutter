@@ -5,14 +5,14 @@ import 'package:pdv_flutter/app/domain/entities/product.dart';
 import 'package:pdv_flutter/app/view/product_list_back.dart';
 
 class ProductList extends StatelessWidget {
+  //retorna de forma assincrona uma lista de Map com seu respectivo valor
+
 final _back = ProductListBack();
 
 CircleAvatar circleAvatar(String url){
-  try{
-    return CircleAvatar(backgroundImage: NetworkImage(url));
-  }catch(e){
-    return CircleAvatar(child: Icon(Icons.add_a_photo));
-  }
+  return(Uri.tryParse(url).isAbsolute)?
+    CircleAvatar(backgroundImage: NetworkImage(url))
+    : CircleAvatar(child: Icon(Icons.add_a_photo));
 }
 
 Widget iconEditButton(Function edit){
