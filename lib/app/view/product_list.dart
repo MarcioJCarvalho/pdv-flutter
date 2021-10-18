@@ -1,56 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pdv_flutter/app/app.dart';
-import 'package:pdv_flutter/app/database/dao/product_dao_impl.dart';
 import 'package:pdv_flutter/app/domain/entities/product.dart';
+import 'package:pdv_flutter/app/view/product_list_back.dart';
 
 class ProductList extends StatelessWidget {
-  //retorna de forma assincrona uma lista de Map com seu respectivo valor
-  Future<List<Product>> _buscar()async{
-    return await ProductDAOImpl().find();
+final _back = ProductListBack();
+
+CircleAvatar circleAvatar(String url){
+  try{
+    return CircleAvatar(backgroundImage: NetworkImage(url));
+  }catch(e){
+    return CircleAvatar(child: Icon(Icons.add_a_photo));
   }
+}
+
+Widget iconEditButton(Function edit){
+  return IconButton(icon: Icon(Icons.edit), color: Colors.orange,onPressed: edit);
+}
+
+Widget iconDeleteButton(BuildContext context, Function delete){
+  return IconButton(
+    icon: Icon(Icons.delete), 
+    color: Colors.red,
+    onPressed: (){
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Excluir'),
+          content: Text('O item será excluido'),
+          actions: [
+            FlatButton(
+              child: Text('Cancelar'),
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: delete
+            ),
+          ],
+        )
+      );
+    }
+  );
+}
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _buscar(),
-      builder: (context, futuro){
-        if(futuro.hasData){
-          List<Product> lista = futuro.data;
-          return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Produtos'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: (){
+              Navigator.of(context).pushNamed(App.PRODUCT_FORM);
+            },
+          )
+        ],
       ),
-      body: ListView.builder(
-        itemCount: lista.length,
-        itemBuilder: (context, i){
-          var produto = lista[i];
-          var img = CircleAvatar(backgroundImage: NetworkImage(produto.urlImg));
-          return ListTile(
-            leading: img,
-            title: Text(produto.nome),
-            subtitle: Text(produto.quantidade),
-            trailing: Container(
-              width: 100,
-              child: Row(
-                children: [
-                  IconButton(icon: Icon(Icons.edit), onPressed: null),
-                  IconButton(icon: Icon(Icons.delete), onPressed: null),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:() {Navigator.of(context).pushNamed(App.PRODUCT_FORM);},
-        tooltip: 'Add Produto',
-        child: Icon(Icons.add),
-      ),
-    );
+      body:Observer(builder: (context){
+      return  FutureBuilder(
+      future: _back.list,
+      builder: (context, futuro){
+        if(!futuro.hasData){
+          return CircularProgressIndicator();
         }else{
-          return Scaffold();
-        }
+          List<Product> lista = futuro.data;
+          return ListView.builder(
+            itemCount: lista.length,
+            itemBuilder: (context, i){
+            var produto = lista[i];
+            return ListTile(
+              leading: circleAvatar(produto.urlImg),
+              title: Text(produto.nome),
+              subtitle: Text(produto.quantidade),
+              trailing: Container(
+                width: 100,
+                child: Row(
+                  children: [
+                    iconEditButton((){
+                      _back.goToForm(context, produto);
+                    }),
+                    iconDeleteButton(context, (){
+                      _back.remove(produto.id);
+                      Navigator.of(context).pop();
+                    }),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
       }
-    );
+    });
+    }));
   }
 }
