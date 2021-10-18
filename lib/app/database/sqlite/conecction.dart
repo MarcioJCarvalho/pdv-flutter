@@ -10,6 +10,7 @@ class Connection{
     if(_db==null){
       //caminho do banco, formado por 2 partes(local, nome-banco)
       var path = join(await getDatabasesPath(),'pdv-db');
+      //deleteDatabase(path);
       _db = await openDatabase(
         path,
         version: 1,

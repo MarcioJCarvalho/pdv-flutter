@@ -1,0 +1,3 @@
+A camada de domínio modela as regras de negócio de seu aplicativo. Esta deve ser sua explicação clara da dinâmica dos componentes, e incluir seu status a qualquer momento. Ou seja, a implementação das funcionalidades das regras de negocio.
+
+A injeção de dependência é um padrão de projeto cujo objetivo é manter o baixo acoplamento entre os diferentes módulos do sistema. Portanto, ao executar injeção de dependência, fornecemos aos objetos do sistema outros objetos dos quais eles dependem de uma maneira fracamente acoplada.

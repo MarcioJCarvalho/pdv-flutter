@@ -1,6 +1,6 @@
 final createTable = '''
   CREATE TABLE IF NOT EXISTS products(
-    id INT PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY,
     nome VARCHAR(200) NOT NULL,
     qtd VARCHAR(255) NOT NULL,
     img VARCHAR(255) NOT NULL
