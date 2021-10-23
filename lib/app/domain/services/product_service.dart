@@ -28,7 +28,7 @@ class ProductService{
     if (name == null) {
       throw new DomainLayerException('O nome é obrigatório.');
     }else if(name.length < min){
-      throw new DomainLayerException('O nome deve ppossuir pelo menos $min caracteres.');
+      throw new DomainLayerException('O nome deve possuir pelo menos $min caracteres.');
     }else if(name.length > max){
       throw new DomainLayerException('O nome deve possuir no máximo $max caracteres.');
     }

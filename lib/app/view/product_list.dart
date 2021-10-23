@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:pdv_flutter/app/app.dart';
 import 'package:pdv_flutter/app/domain/entities/product.dart';
 import 'package:pdv_flutter/app/view/product_list_back.dart';
 
@@ -56,7 +55,7 @@ Widget iconDeleteButton(BuildContext context, Function delete){
           IconButton(
             icon: Icon(Icons.add),
             onPressed: (){
-              Navigator.of(context).pushNamed(App.PRODUCT_FORM);
+              _back.goToForm(context);
             },
           )
         ],

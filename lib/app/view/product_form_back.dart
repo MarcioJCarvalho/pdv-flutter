@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobx/mobx.dart';
 import 'package:pdv_flutter/app/domain/entities/product.dart';
 import 'package:pdv_flutter/app/domain/services/product_service.dart';
 
-part 'product_form_back.g.dart';
-
-class ProductFormBack = _ProductFormBack with _$ProductFormBack;
-
-abstract class _ProductFormBack with Store{
+class ProductFormBack{
   Product product;
   var _service = GetIt.I.get<ProductService>();
   bool _nameIsValid;
   bool _qtdIsValid;
 
-  //@action
   bool get isValid => _nameIsValid && _qtdIsValid;
 
   //diferenciar novo com alteração
-  _ProductFormBack(BuildContext context){
+  ProductFormBack(BuildContext context){
     var parameter = ModalRoute.of(context).settings.arguments;
     product = (parameter == null)? Product(): parameter;
   }
