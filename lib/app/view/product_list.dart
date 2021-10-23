@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:pdv_flutter/app/app.dart';
 import 'package:pdv_flutter/app/domain/entities/product.dart';
 import 'package:pdv_flutter/app/view/product_list_back.dart';
 
@@ -75,6 +76,9 @@ Widget iconDeleteButton(BuildContext context, Function delete){
             return ListTile(
               leading: circleAvatar(produto.urlImg),
               title: Text(produto.nome),
+              onTap: (){
+                _back.goToDetails(context, produto);
+              },
               subtitle: Text(produto.quantidade),
               trailing: Container(
                 width: 100,
