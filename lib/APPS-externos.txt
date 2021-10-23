@@ -1,0 +1,1 @@
+Não constuí ainda a chamada de uso de APPs externa porque minha aplicação começou pelo cadastro de produtos, logo não faz uso de chamada telefonica e nem e-mails, mas elaborarei um uso de chamada de APPs externos para meus detalhes de produto

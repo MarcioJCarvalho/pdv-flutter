@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdv_flutter/app/view/home.dart';
+import 'package:pdv_flutter/app/view/product_details.dart';
 import 'package:pdv_flutter/app/view/product_form.dart';
 import 'package:pdv_flutter/app/view/product_list.dart';
 
@@ -9,6 +10,7 @@ class App extends StatelessWidget {
   static const HOME = '/';
   static const PRODUCT_LIST = 'product-list';
   static const PRODUCT_FORM = 'product-form';
+  static const PRODUCT_DETAILS = 'product-details';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,6 +24,7 @@ class App extends StatelessWidget {
         HOME:(context)=>Home(),
         PRODUCT_LIST:(context)=>ProductList(),
         PRODUCT_FORM:(context)=>ProductForm(),
+        PRODUCT_DETAILS:(context)=>ProductDetails(),
       },
     );
   }
