@@ -1,5 +1,5 @@
 class Product{
-  int id;
+  dynamic id;
   String quantidade;
   String nome;
   String urlImg;
