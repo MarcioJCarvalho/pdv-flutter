@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "889574292190",
+    "project_id": "pdv-flutter",
+    "storage_bucket": "pdv-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889574292190:android:f1cec8e56a803cb095204f",
+        "android_client_info": {
+          "package_name": "br.com.marciojcarvalho.pdv_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889574292190-r893338ts1cud7qkc53ge0j0d9m2t9k7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBftpiXO9NeqLQlKuBW1AXcc5YQfyeLuIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889574292190-r893338ts1cud7qkc53ge0j0d9m2t9k7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
